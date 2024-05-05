@@ -1,0 +1,189 @@
+/* -signup Container- */
+.signup-container{
+	display: flex;
+    flex-direction: column;
+	
+    padding: 20px;
+    width: 100%;
+    height: auto;
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    z-index: 1;
+	position: relative;	
+}
+/* ------------------ */
+
+/* -Heading- */
+h1{
+	color: #4C489D;
+    font-size: 35px;
+    font-weight: 600;
+	margin-left: 85px;
+	font-family: Raleway;
+}
+/* --------- */
+
+/* -Icons Style- */
+.pass_show_icon{
+	display: absolute;
+	top: 11px;
+	color: #D1D1D4;
+	padding-left: 5px
+}
+/* ------------- */
+
+/* -signup Form fields- */
+.signup__field {
+	margin: 20px 0px;	
+	position: relative;	
+}
+
+.signup__fullname__field{
+    display: flex;
+	column-gap: 10px;
+    width: 88%;
+}
+
+.signup__psw__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 79%;
+	transition: .2s;
+}
+
+.signup__name__input{
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    font-weight: 700;
+    width: 79%;
+    transition: .2s;
+}
+
+.signup__mail__input{
+    border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 79%;
+	transition: .2s;
+}
+
+.signup__name__input:active,
+.signup__name__input:focus,
+.signup__name__input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}
+
+.signup__psw__input:active,
+.signup__psw__input:focus,
+.signup__psw__input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}
+
+.signup__mail__input:active,
+.signup__mail__input:focus,
+.signup__mail__input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}
+/* ------------------- */
+
+/* Validation Warning */
+.warning{
+	color: red;
+	margin: 0px !important;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+input.ng-invalid.ng-touched{
+	border-bottom-color: rgba(255, 0, 0, 0.575);
+}
+
+.error-list{
+	width: 87%;
+}
+
+.list-style {
+	list-style-type: none;
+}
+/* ------------------ */
+
+
+/* Spinner and email checked Icon */
+.email-check{
+	color:#4C489D;
+	padding-left: 5px;
+}
+/* ----------- */
+
+/* Additional link's style */
+.additional-links{
+	padding-top: 8px;
+	padding-right: 58px;
+	text-align: center;
+}
+.link-style {
+  text-decoration: none;
+  color: #333064; 
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.link-style:hover {
+	text-decoration: underline;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.811); 
+}
+/* ----------------------- */
+
+/* -Submit Button- */
+.signup__submit {
+	display: flex;
+	justify-content: space-between;
+	background: #fff;
+	font-size: 14px;
+	margin-left: 63px;
+	padding: 10px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	align-items: center;
+	width: 45%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.disable-btn{
+	color: #4c489d71;
+	cursor: default;
+}
+
+.signup__submit:active,
+.signup__submit:focus,
+.signup__submit:hover {
+	border-color: #6A679E;
+	outline: none;
+}
+
+.signup__icon{
+	font-size: 20px;
+}
+/* ---------------- */

@@ -1,0 +1,25 @@
+.not-found-container {
+    text-align: center;
+    margin-top: 100px;
+    color: #333;
+}
+h1 {
+    font-size: 96px;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 24px;
+    color: #666;
+}
+a {
+    font-size: 20px;
+    padding: 8px 16px;
+    background-color: #2283ec;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+a:hover {
+    background-color: #0056b3;
+}

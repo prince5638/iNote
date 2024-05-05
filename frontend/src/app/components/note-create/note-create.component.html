@@ -1,0 +1,34 @@
+<ng-template #createModel let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Create Note</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<form [formGroup]="createNote" (ngSubmit)="createNoteSubmit()">
+		<div class="modal-body">
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" placeholder="Note title" formControlName="title">
+					
+					<!-- title Validation message -->
+					<div *ngIf="createNote.get('title')?.invalid && (createNote.get('title')?.dirty || createNote.get('title')?.touched)" class="text-danger">
+						<div *ngIf="createNote.get('title')?.errors?.['required']">Title is required</div>
+					</div>
+				</div>
+
+				<div class="form-group mb-3">
+					<textarea class="form-control" rows="3" placeholder="Note description" formControlName="description"></textarea>
+
+					<!-- Description Validation message -->
+					<div *ngIf="createNote.get('description')?.invalid && (createNote.get('description')?.dirty || createNote.get('description')?.touched)" class="text-danger">
+						<div *ngIf="createNote.get('description')?.errors?.['required']">Title is required</div>
+					</div>
+				</div>
+
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" placeholder="Add Custome tag" formControlName="tag">
+				</div>
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-success" [disabled]="createNote.invalid" [style.opacity]="createNote.valid ? 1 : 0.5" (click)="modal.close('Save click')">Create</button>
+		</div>
+	</form>
+</ng-template>

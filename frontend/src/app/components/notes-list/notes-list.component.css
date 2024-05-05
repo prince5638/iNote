@@ -1,0 +1,102 @@
+.notes-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 90px;
+  padding-bottom: 15px;
+}
+
+.heading{
+  font-size: 34px;
+  margin-bottom: 10px !important;
+}
+
+.create-btn{
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Controls the space between cards */
+  justify-content: center;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 300px; /* Set fixed width for each card */
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eee;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.note-date {
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.card-body {
+  padding: 15px;
+  flex: 1; /* Allows this element to expand */
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  /* text-align: center; */
+  background-color: #f7f7f7;
+  border-top: 1px solid #eee;
+}
+
+.footer-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-btn {
+  color: #007bff;
+  padding-right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.delete-btn {
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}

@@ -1,0 +1,37 @@
+<app-note-create></app-note-create>
+<app-note-editor></app-note-editor>
+<app-note-delete></app-note-delete>
+
+<div class="notes-container">
+    <div class="header-container">
+        <h2 class="heading">Your Notes</h2>
+        <button class="create-btn" (click)="createNote()">Create Note</button>
+    </div>
+
+    @if(notes.length > 0)
+    {
+        <div class="card-container">
+            <div class="note-card" *ngFor="let note of notes">
+                <div class="card-header" [style.backgroundColor]="note.color">
+                    <h4>{{ note.title }}</h4>
+                    <span class="note-date">Created on ~ {{ note.createdAt | date:'mediumDate' }}</span>
+                </div>
+                <div class="card-body">
+                    <div>{{ note.description }}</div>
+                </div>
+                <div class="card-footer" [style.backgroundColor]="note.color">
+                    <span>#{{ note.tag }}</span>
+                    <div>
+                        <a class="edit-btn" (click)="editNote(note._id)"><fa-icon [icon]="editNoteIcon"></fa-icon></a>
+                        <a class="delete-btn" (click)="deleteNote(note)"><fa-icon [icon]="deleteNoteIcon"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @else {
+        <div class="no-notes">
+            <h3>No notes found</h3>
+        </div>
+    }
+</div>

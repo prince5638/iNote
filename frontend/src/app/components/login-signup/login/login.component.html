@@ -1,0 +1,70 @@
+<div class="outer-container">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="login-container">
+                <form [formGroup]="loginForm" (ngSubmit)="onloginFormSubmit()">
+                    <h1>login</h1>
+                    <div class="login__field">
+                        <fa-icon [icon]="mailIcon" class="icons"></fa-icon>
+                        <input type="email" class="login_email_input" id="floatingInput" placeholder="name@example.com" formControlName="email">
+                        <!-- [start] EMAIL Validation error message -->
+                        @if(loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched){
+                            <p class="warning">Email is required.</p>
+                        }
+                        @else if(loginForm.get('email')?.errors?.['email']){
+                            <p class="warning">Incorrect Email formate</p>
+                        }
+                        <!-- [end] EMAIL Validation error message -->
+                    </div>
+                    <div class="login__field">
+                        <fa-icon [icon]="passwordIcon" class="icons"></fa-icon>
+                        <input [type]="passwordType" class="login__input" id="floatingPassword" placeholder="Password" formControlName="password" #password>
+                        <fa-icon [icon]="eyeIconPassword" class="pass_show_icon" (click)="togglePassword(password.type)"></fa-icon>
+                        <!-- [start] PASSWORD Validation error message -->
+                        @if(loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched){
+                            <p class="warning">Password is required.</p>
+                        }
+                        @else if(loginForm.get('password')?.errors?.['minlength'])
+                        {
+                            <p class="warning">Password must be at least 8 characters long.</p>
+                        }
+                        <!-- [end] PASSWORD Validation error message -->
+                    </div>
+                    <!-- login Button -->
+                    <div class="button-div">
+                        <button class="login__submit" [disabled]="loginForm.invalid" [ngClass]="{'disable-btn': (loginForm.invalid && loginForm.touched)}">
+                            <span class="button__text">Log In Now</span>
+                            <span class="login__icon">
+                                <fa-icon [icon]="loginIcon"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                <div class="additional-links">
+                    <a [routerLink]="'/forget-password'" class="link-style">Forgot Password?</a> 
+                    <a [routerLink]="'/signup'" class="link-style">SignUP Here</a>
+                </div>
+            </div>
+            <div class="social-login">
+                <h3>Continue with</h3>
+                <div class="social-icons">
+                    <div>
+                        <a href="#" class="social-login__icon fab fa-instagram"><fa-icon [icon]="instaIcon"></fa-icon></a>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="facebookIcon"></fa-icon></a>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="twitterIcon"></fa-icon></a>
+                    </div>
+                    <div>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="githubIcon"></fa-icon></a>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="linkdinIcon"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,156 @@
+<div class="outer-container">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="signup-container">
+                <form [formGroup]="signupForm" (ngSubmit)="onSignupFormSubmit()">
+                    <h1>SignUp</h1>
+                    <!-- First name & Last name -->
+                    <div class="signup__fullname__field">
+                        <div>
+                            <input type="text" class="signup__name__input" placeholder="First Name" formControlName="firstName">
+                            <!-- [start] FIRST_NAME Validation error message -->
+                            @if(signupForm.get('firstName')?.errors?.['required'] && signupForm.get('firstName')?.touched)
+                            {
+                                <p class="warning">First name is required.</p>
+                            }
+                            @else if(signupForm.get('firstName')?.errors?.['pattern'])
+                            {
+                                <p class="warning">Special characters are not allowed!</p>
+                            }
+                            @else if(signupForm.get('firstName')?.errors?.['minlength'])
+                            {
+                                <p class="warning">Atleast 3 character's required!</p>
+                            }
+                            <!-- [end] FIRST_NAME Validation error message -->
+                        </div>
+                        <div>
+                            <input type="text" class="signup__name__input" placeholder="Last Name" formControlName="lastName">
+                            <!-- [start] LAST_NAME Validation error message -->
+                            @if(signupForm.get('lastName')?.errors?.['required'] && signupForm.get('lastName')?.touched)
+                            {
+                                <p class="warning">Last name is required.</p>
+                            }
+                            @else if(signupForm.get('lastName')?.errors?.['pattern'])
+                            {
+                                <p class="warning">Special characters are not allowed!</p>
+                            }
+                            @else if(signupForm.get('lastName')?.errors?.['minlength'])
+                            {
+                                <p class="warning">Atleast 3 character's required!</p>
+                            }
+                            <!-- [end] LAST_NAME Validation error message -->
+                        </div>
+                    </div>
+                    <!-- email id -->
+                    <div class="signup__field">
+                        <fa-icon [icon]="mailIcon" class="icons"></fa-icon>
+                        <input type="email" class="signup__mail__input" placeholder="name@example.com" formControlName="email">
+                        <!-- Spinner while checking the email valid -->
+                        <div class="spinner-border spinner-border-sm email-check" [ngClass]="{ 'd-none': !signupForm.get('email')?.pending }" role="status">
+                            <span class="visually-hidden" >Loading...</span>
+                        <!-- email valid ICON -->
+                        </div>
+                        <fa-icon [icon]="emailAllowed" class="email-check" [ngClass]="{ 'd-none': signupForm.get('email')?.status === 'INVALID' || signupForm.get('email')?.pending}"></fa-icon>
+                        <!-- [start] EMAIL Validation error message -->
+                        @if(signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched)
+                        {
+                            <p class="warning">Email is required.</p>
+                        }
+                        @else if(signupForm.get('email')?.errors?.['email']){
+                            <p class="warning">Incorrect Email formate</p>
+                        }
+                        @else if(signupForm.get('email')?.errors?.['emailAlreadyExists']){
+                            <p class="warning">Email already exists!</p>
+                        }
+                        <!-- [end] EMAIL Validation error message -->
+                    </div>
+                    <div formGroupName="psw">
+                        <!-- password -->
+                        <div class="signup__field">
+                            <fa-icon [icon]="passwordIcon" class="icons"></fa-icon>
+                            <input [type]="passwordType" class="signup__psw__input"  placeholder="Password" #password formControlName="password">
+                            <fa-icon [icon]="eyeIconPassword" class="pass_show_icon" (click)="togglePassword(password.type)"></fa-icon>
+                            <!-- [start] PASSWORD Validation error message -->
+                            @if(signupForm.get('psw.password')?.errors?.['required'] && signupForm.get('psw.password')?.touched)
+                            {
+                                <p class="warning">Password is required.</p>
+                            }
+                            @else if(signupForm.get('psw')?.errors?.['passwordStrength'] && signupForm.get('psw.password')?.dirty)
+                            {
+                                <div class="warning error-list">
+                                    <div class="row">
+                                        <ul class="col list-style">
+                                            <li>*one uppercase letter</li>
+                                            <li>*one lowercase letter</li>
+                                        </ul>
+                                        <ul class="col list-style">
+                                            <li>*one number letter</li>
+                                            <li>*one special character</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                            @else if(signupForm.get('psw.password')?.errors?.['minlength'])
+                            {
+                                <p class="warning">Password must be at least 8 characters long.</p>
+                            }
+                            <!-- [end] PASSWORD Validation error message -->
+                        </div>
+                        <!-- confirm password -->
+                        <div class="signup__field">
+                            <fa-icon [icon]="passwordIcon" class="icons"></fa-icon>
+                            <input [type]="confirmPasswordType" class="signup__psw__input" placeholder="Confirm Password" #confirmPassword formControlName="confirmPassword">
+                            <fa-icon [icon]="eyeIconConfirmPassword" class="pass_show_icon" (click)="toggleConfirmPassword(confirmPassword.type)"></fa-icon>
+                            <!-- [start] CONFIRM_PASSWORD Validation error message -->
+                            @if(signupForm.get('psw.confirmPassword')?.errors?.['required'] && signupForm.get('psw.confirmPassword')?.touched)
+                            {
+                                <p class="warning">Password is required.</p>
+                            }
+                            @else if(signupForm.get('psw.confirmPassword')?.errors?.['minlength'])
+                            {
+                                <p class="warning">Password must be at least 8 characters long.</p>
+                            }
+                            @else if(signupForm.get('psw')?.errors?.['confirmPassword'] && signupForm.get('psw.confirmPassword')?.dirty)
+                            {
+                                <p class="warning">Password and Confirm Password do not match.</p>
+                            }
+                            <!-- [end] CONFIRM_PASSWORD Validation error message -->
+                        </div>
+                    </div>
+                    <!-- signup Button -->
+                    <div class="button-div">
+                        <button class="signup__submit" [ngClass]="{'disable-btn': (signupForm.invalid && signupForm.touched)}">
+                            <span class="button__text">Sign Up Now</span>
+                            <span class="signup__icon">
+                                <fa-icon [icon]="signUpIcon"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                <div class="additional-links">
+                    <a [routerLink]="'/login'" class="link-style">Login</a>
+                </div>
+            </div>
+            <div class="social-login">
+                <h3>Continue with</h3>
+                <div class="social-icons">
+                    <div>
+                        <a href="#" class="social-login__icon fab fa-instagram"><fa-icon [icon]="instaIcon"></fa-icon></a>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="facebookIcon"></fa-icon></a>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="twitterIcon"></fa-icon></a>
+                    </div>
+                    <div>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="githubIcon"></fa-icon></a>
+                        <a href="#" class="social-login__icon"><fa-icon [icon]="linkdinIcon"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+        </div>
+    </div>
+</div>

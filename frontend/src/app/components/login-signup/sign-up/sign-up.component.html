@@ -119,7 +119,7 @@
                     </div>
                     <!-- signup Button -->
                     <div class="button-div">
-                        <button class="signup__submit" [ngClass]="{'disable-btn': (signupForm.invalid && signupForm.touched)}">
+                        <button class="signup__submit" [disabled]="signupForm.invalid" [ngClass]="{'disable-btn': (signupForm.invalid && signupForm.touched)}">
                             <span class="button__text">Sign Up Now</span>
                             <span class="signup__icon">
                                 <fa-icon [icon]="signUpIcon"></fa-icon>
